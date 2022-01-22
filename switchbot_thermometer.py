@@ -9,7 +9,12 @@ import datetime
 import json
 
 # Import config
-from config import sensor_data_file_path
+from config import (
+    sensor_data_file_path,
+    temperature_file_path,
+    humidity_file_path,
+    battery_file_path
+)
 
 # SwitchBot UUID - See https://github.com/OpenWonderLabs/python-host/wiki/Meter-BLE-open-API
 service_uuid = "cba20d00-224d-11e6-9fb8-0002a5d5c51b"
@@ -50,24 +55,54 @@ class ScanDelegate(DefaultDelegate):
             # Get current time
             time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-            # Construct JSON
-            msg_data = json.dumps({
+            # Construct temperature JSON
+            temperature_data = json.dumps({
                 "address": mac,
                 "time": time,
                 "temperature": temperature,
-                "humidity": humidity,
-                "battery": battery,
                 "temperature_scale": temp_scale,
                 "signal_strength": dev.rssi,
             })
 
-            # Print into the data file
-            with open(sensor_data_file_path, "w+") as f:
-                f.write(msg_data)
+            # Print temperature into data file
+            with open(temperature_file_path, "w+") as f:
+                f.write(temperature_data)
+                f.close()
+
+            # Print temperature to the console
+            print(temperature_data)
+
+            # Construct humidity JSON
+            humidity_data = json.dumps({
+                "address": mac,
+                "time": time,
+                "humidity": humidity,
+                "signal_strength": dev.rssi,
+            })
+
+            # Print humidity into data file
+            with open(humidity_file_path, "w+") as f:
+                f.write(humidity_data)
                 f.close()
 
             # Print to the console
-            print(msg_data)
+            print(humidity_data)
+
+            # Construct battery JSON
+            battery_data = json.dumps({
+                "address": mac,
+                "time": time,
+                "battery": battery,
+                "signal_strength": dev.rssi,
+            })
+
+            # Print battery into data file
+            with open(battery_file_path, "w+") as f:
+                f.write(battery_data)
+                f.close()
+
+            # Print to the console
+            print(battery_data)
 
 
 def main():

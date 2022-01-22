@@ -1,1 +1,5 @@
 sensor_data_file_path = "/home/clacaile/homeassistant/sensors/switchbot_thermometer/switchbot_thermometer_data.txt"
+temperature_file_path = "/home/clacaile/homeassistant/sensors/switchbot_thermometer/data/temperature.txt"
+humidity_file_path = "/home/clacaile/homeassistant/sensors/switchbot_thermometer/data/humidity.txt"
+battery_file_path = "/home/clacaile/homeassistant/sensors/switchbot_thermometer/data/battery.txt"
+rssi_file_path = "/home/clacaile/homeassistant/sensors/switchbot_thermometer/data/rssi.txt"
