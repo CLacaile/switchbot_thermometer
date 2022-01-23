@@ -65,8 +65,9 @@ class ScanDelegate(DefaultDelegate):
             })
 
             # Print temperature into data file
-            with open(temperature_file_path, "w+") as f:
+            with open(temperature_file_path, "a+") as f:
                 f.write(temperature_data)
+                f.write("\n")
                 f.close()
 
             # Print temperature to the console
@@ -81,8 +82,9 @@ class ScanDelegate(DefaultDelegate):
             })
 
             # Print humidity into data file
-            with open(humidity_file_path, "w+") as f:
+            with open(humidity_file_path, "a+") as f:
                 f.write(humidity_data)
+                f.write("\n")
                 f.close()
 
             # Print to the console
@@ -97,8 +99,9 @@ class ScanDelegate(DefaultDelegate):
             })
 
             # Print battery into data file
-            with open(battery_file_path, "w+") as f:
+            with open(battery_file_path, "a+") as f:
                 f.write(battery_data)
+                f.write("\n")
                 f.close()
 
             # Print to the console
